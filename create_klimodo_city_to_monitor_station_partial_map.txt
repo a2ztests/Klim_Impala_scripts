@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS amir.klimodo_city_to_monitor_station_partial_map;
+create external table amir.klimodo_city_to_monitor_station_partial_map (
+city_code int ,
+	city_desc string ,
+	monitor_station_id int ,
+	monitor_station_desc string
+  )
+  
+  row format delimited
+  fields terminated by ','
+ location '/user/amir.shaked/klimodo/klimodo_city_to_monitor_station_partial_map';

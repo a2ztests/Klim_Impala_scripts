@@ -1,0 +1,788 @@
+--+++++++++++++++++++++++++++++++++++++++++++Create the supporting views
+DROP VIEW IF EXISTS amir.vw_0_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_0_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 0 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code ,No_Hospitalization,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=0;
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_1_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_1_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 1 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=1;
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_2_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_2_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 2 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=2;
+
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_3_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_3_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 3 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=3;
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_4_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_4_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 4 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=4;
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_5_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_5_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 5 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=5;
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_6_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_6_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 6 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=6;
+
+--+++++++++++++++++++++++++++++++++++++++++++
+DROP VIEW IF EXISTS amir.vw_7_delivery_to_klimodo;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_7_delivery_to_klimodo
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of 7 days from the hospital visit'
+  AS 
+
+
+
+select 
+identity,institute_code,No_Hospitalization ,Monitor_Station_Id,Monitor_Station_Desc,Station_City_Distance_km,Admission_Month,Admission_Year,no_of_days_before_admission,monitor_time
+,CO,Filter,filter_2_half,ITemp,Benzen,H2S,no,No2,Nox,O3,PM10,PREC,RH,SO2,STAB,Temp,TOLUENE,WD,WS,BP,pm2_half,SR,StWd,NO_T,NOX_T,NO2_T,shTemp,PM1,Main_Diagnose,Main_Operation,diagnose_type
+,visit_reason,age_in_months,secondary_diagnoseoperation,secondary_diagnoseoperation_type,gender,discharge_type
+from amir.delivery_to_klimodo
+
+where 
+no_of_days_before_admission=7;
+
+
+
+--+++++++++++++++++++++++++++++++++++++++++++Create the final output table
+DROP TABLE IF EXISTS amir.klimodo_Flat_Final_Output;
+create external table amir.klimodo_Flat_Final_Output (
+
+identity  string --this field will not be provided to the researcher
+--,No_Hospitalization --this field will not be provided to the researcher
+--,institute_code --this field will not be provided to the researcher 
+--,Row_Num --this field will not be provided to the researcher
+,Monitor_Station_Id int
+,Monitor_Station_Desc string
+,Station_City_Distance_km float
+,Admission_Month int
+,Admission_Year	int
+
+--Remember that the clinical data is shifted in the lake +5 days
+--,no_of_days_before_admission int
+,monitor_time string
+
+--,pnimi.City_code as Patient_City_code   --this field will not be provided to the researcher
+--,pnimi.City_desc as Patient_City_desc --this field will not be provided to the researcher
+
+  
+,0_CO decimal(11, 4)
+,0_Filter decimal(11, 4)
+,0_filter_2_half decimal(11, 4)
+,0_ITemp decimal(11, 4)
+,0_Benzen decimal(11, 4)
+,0_H2S decimal(11, 4)
+,0_no decimal(11, 4)
+,0_No2 decimal(11, 4)
+,0_Nox decimal(11, 4)
+,0_O3 decimal(11, 4)
+,0_PM10 decimal(11, 4)
+,0_PREC decimal(11, 4)
+,0_RH decimal(11, 4)
+,0_SO2 decimal(11, 4)
+,0_STAB decimal(11, 4)
+,0_Temp decimal(11, 4)
+,0_TOLUENE decimal(11, 4)
+,0_WD decimal(11, 4)
+,0_WS decimal(11, 4)
+,0_BP decimal(11, 4)
+,0_pm2_half decimal(11, 4)
+,0_SR decimal(11, 4)
+,0_StWd decimal(11, 4)
+,0_NO_T decimal(11, 4)
+,0_NOX_T decimal(11, 4)
+,0_NO2_T decimal(11, 4)
+,0_shTemp decimal(11, 4)
+,0_PM1 decimal(11, 4)
+
+,1_CO decimal(11, 4)
+,1_Filter decimal(11, 4)
+,1_filter_2_half decimal(11, 4)
+,1_ITemp decimal(11, 4)
+,1_Benzen decimal(11, 4)
+,1_H2S decimal(11, 4)
+,1_no decimal(11, 4)
+,1_No2 decimal(11, 4)
+,1_Nox decimal(11, 4)
+,1_O3 decimal(11, 4)
+,1_PM10 decimal(11, 4)
+,1_PREC decimal(11, 4)
+,1_RH decimal(11, 4)
+,1_SO2 decimal(11, 4)
+,1_STAB decimal(11, 4)
+,1_Temp decimal(11, 4)
+,1_TOLUENE decimal(11, 4)
+,1_WD decimal(11, 4)
+,1_WS decimal(11, 4)
+,1_BP decimal(11, 4)
+,1_pm2_half decimal(11, 4)
+,1_SR decimal(11, 4)
+,1_StWd decimal(11, 4)
+,1_NO_T decimal(11, 4)
+,1_NOX_T decimal(11, 4)
+,1_NO2_T decimal(11, 4)
+,1_shTemp decimal(11, 4)
+,1_PM1 decimal(11, 4)
+
+,2_CO decimal(11, 4)
+,2_Filter decimal(11, 4)
+,2_filter_2_half decimal(11, 4)
+,2_ITemp decimal(11, 4)
+,2_Benzen decimal(11, 4)
+,2_H2S decimal(11, 4)
+,2_no decimal(11, 4)
+,2_No2 decimal(11, 4)
+,2_Nox decimal(11, 4)
+,2_O3 decimal(11, 4)
+,2_PM10 decimal(11, 4)
+,2_PREC decimal(11, 4)
+,2_RH decimal(11, 4)
+,2_SO2 decimal(11, 4)
+,2_STAB decimal(11, 4)
+,2_Temp decimal(11, 4)
+,2_TOLUENE decimal(11, 4)
+,2_WD decimal(11, 4)
+,2_WS decimal(11, 4)
+,2_BP decimal(11, 4)
+,2_pm2_half decimal(11, 4)
+,2_SR decimal(11, 4)
+,2_StWd decimal(11, 4)
+,2_NO_T decimal(11, 4)
+,2_NOX_T decimal(11, 4)
+,2_NO2_T decimal(11, 4)
+,2_shTemp decimal(11, 4)
+,2_PM1 decimal(11, 4)
+
+,3_CO decimal(11, 4)
+,3_Filter decimal(11, 4)
+,3_filter_2_half decimal(11, 4)
+,3_ITemp decimal(11, 4)
+,3_Benzen decimal(11, 4)
+,3_H2S decimal(11, 4)
+,3_no decimal(11, 4)
+,3_No2 decimal(11, 4)
+,3_Nox decimal(11, 4)
+,3_O3 decimal(11, 4)
+,3_PM10 decimal(11, 4)
+,3_PREC decimal(11, 4)
+,3_RH decimal(11, 4)
+,3_SO2 decimal(11, 4)
+,3_STAB decimal(11, 4)
+,3_Temp decimal(11, 4)
+,3_TOLUENE decimal(11, 4)
+,3_WD decimal(11, 4)
+,3_WS decimal(11, 4)
+,3_BP decimal(11, 4)
+,3_pm2_half decimal(11, 4)
+,3_SR decimal(11, 4)
+,3_StWd decimal(11, 4)
+,3_NO_T decimal(11, 4)
+,3_NOX_T decimal(11, 4)
+,3_NO3_T decimal(11, 4)
+,3_shTemp decimal(11, 4)
+,3_PM1 decimal(11, 4)
+
+,4_CO decimal(11, 4)
+,4_Filter decimal(11, 4)
+,4_filter_2_half decimal(11, 4)
+,4_ITemp decimal(11, 4)
+,4_Benzen decimal(11, 4)
+,4_H2S decimal(11, 4)
+,4_no decimal(11, 4)
+,4_No2 decimal(11, 4)
+,4_Nox decimal(11, 4)
+,4_O3 decimal(11, 4)
+,4_PM10 decimal(11, 4)
+,4_PREC decimal(11, 4)
+,4_RH decimal(11, 4)
+,4_SO2 decimal(11, 4)
+,4_STAB decimal(11, 4)
+,4_Temp decimal(11, 4)
+,4_TOLUENE decimal(11, 4)
+,4_WD decimal(11, 4)
+,4_WS decimal(11, 4)
+,4_BP decimal(11, 4)
+,4_pm2_half decimal(11, 4)
+,4_SR decimal(11, 4)
+,4_StWd decimal(11, 4)
+,4_NO_T decimal(11, 4)
+,4_NOX_T decimal(11, 4)
+,4_NO4_T decimal(11, 4)
+,4_shTemp decimal(11, 4)
+,4_PM1 decimal(11, 4)
+
+,5_CO decimal(11, 4)
+,5_Filter decimal(11, 4)
+,5_filter_2_half decimal(11, 4)
+,5_ITemp decimal(11, 4)
+,5_Benzen decimal(11, 4)
+,5_H2S decimal(11, 4)
+,5_no decimal(11, 4)
+,5_No2 decimal(11, 4)
+,5_Nox decimal(11, 4)
+,5_O3 decimal(11, 4)
+,5_PM10 decimal(11, 4)
+,5_PREC decimal(11, 4)
+,5_RH decimal(11, 4)
+,5_SO2 decimal(11, 4)
+,5_STAB decimal(11, 4)
+,5_Temp decimal(11, 4)
+,5_TOLUENE decimal(11, 4)
+,5_WD decimal(11, 4)
+,5_WS decimal(11, 4)
+,5_BP decimal(11, 4)
+,5_pm2_half decimal(11, 4)
+,5_SR decimal(11, 4)
+,5_StWd decimal(11, 4)
+,5_NO_T decimal(11, 4)
+,5_NOX_T decimal(11, 4)
+,5_NO5_T decimal(11, 4)
+,5_shTemp decimal(11, 4)
+,5_PM1 decimal(11, 4)
+
+,6_CO decimal(11, 4)
+,6_Filter decimal(11, 4)
+,6_filter_2_half decimal(11, 4)
+,6_ITemp decimal(11, 4)
+,6_Benzen decimal(11, 4)
+,6_H2S decimal(11, 4)
+,6_no decimal(11, 4)
+,6_No2 decimal(11, 4)
+,6_Nox decimal(11, 4)
+,6_O3 decimal(11, 4)
+,6_PM10 decimal(11, 4)
+,6_PREC decimal(11, 4)
+,6_RH decimal(11, 4)
+,6_SO2 decimal(11, 4)
+,6_STAB decimal(11, 4)
+,6_Temp decimal(11, 4)
+,6_TOLUENE decimal(11, 4)
+,6_WD decimal(11, 4)
+,6_WS decimal(11, 4)
+,6_BP decimal(11, 4)
+,6_pm2_half decimal(11, 4)
+,6_SR decimal(11, 4)
+,6_StWd decimal(11, 4)
+,6_NO_T decimal(11, 4)
+,6_NOX_T decimal(11, 4)
+,6_NO6_T decimal(11, 4)
+,6_shTemp decimal(11, 4)
+,6_PM1 decimal(11, 4)
+
+,7_CO decimal(11, 4)
+,7_Filter decimal(11, 4)
+,7_filter_2_half decimal(11, 4)
+,7_ITemp decimal(11, 4)
+,7_Benzen decimal(11, 4)
+,7_H2S decimal(11, 4)
+,7_no decimal(11, 4)
+,7_No2 decimal(11, 4)
+,7_Nox decimal(11, 4)
+,7_O3 decimal(11, 4)
+,7_PM10 decimal(11, 4)
+,7_PREC decimal(11, 4)
+,7_RH decimal(11, 4)
+,7_SO2 decimal(11, 4)
+,7_STAB decimal(11, 4)
+,7_Temp decimal(11, 4)
+,7_TOLUENE decimal(11, 4)
+,7_WD decimal(11, 4)
+,7_WS decimal(11, 4)
+,7_BP decimal(11, 4)
+,7_pm2_half decimal(11, 4)
+,7_SR decimal(11, 4)
+,7_StWd decimal(11, 4)
+,7_NO_T decimal(11, 4)
+,7_NOX_T decimal(11, 4)
+,7_NO7_T decimal(11, 4)
+,7_shTemp decimal(11, 4)
+,7_PM1 decimal(11, 4)
+  
+
+,Main_Diagnose string
+,Main_Operation string
+,diagnose_type string
+,visit_reason string
+,age_in_months int
+
+,secondary_diagnoseoperation string
+,secondary_diagnoseoperation_type string
+,gender string
+,discharge_type string  
+  
+  )
+  
+  row format delimited
+  fields terminated by ','
+ location '/user/amir.shaked/klimodo/klimodo_Flat_Final_Output';
+
+--+++++++++++++++++++++++++++++++++++++++++++
+--Gathering statistics for all the tables is straightforward, one COMPUTE STATS statement per table:
+compute stats amir.klimodo_Flat_Final_Output;
+compute stats amir.delivery_to_klimodo;
+compute stats amir.dim_city;
+compute stats amir.hosp_chronic_diagnosis;
+compute stats amir.hosp_financier;
+compute stats amir.hosp_ward_main_dgop;
+compute stats amir.hosp_ward_secondary_dgop;
+compute stats amir.hospitalizations_visit;
+compute stats amir.hospitalizations_visit_test_raw;
+compute stats amir.klimodo_city_to_monitor_station_partial_map;
+compute stats amir.klimodo_monitor_station_city_distances;
+compute stats amir.klimodo_monitor_stations;
+compute stats amir.klimodo_monitor_stations_data;
+--compute stats vw_dat_not_mapped_stations;
+--compute stats vw_klimodo_hospitalization_data_select;
+--compute stats amir.klimodo_data_testing_manipulated;
+compute stats amir.klimodo_Flat_Final_Output
+
+--Replace schema amir. with schema klimodo. !!! in this query in prod
+
+insert overwrite table amir.klimodo_Flat_Final_Output
+select
+vw_0.identity
+,vw_0.Monitor_Station_Id 
+,vw_0.Monitor_Station_Desc 
+,vw_0.Station_City_Distance_km 
+,vw_0.Admission_Month 
+,vw_0.Admission_Year	
+
+--Remember that the clinical data is shifted in the lake +5 days
+--,no_of_days_before_admission --this file is not required because we flatten the no. of days
+,vw_0.monitor_time 
+
+--,pnimi.City_code as Patient_City_code   --this field will not be provided to the researcher
+--,pnimi.City_desc as Patient_City_desc --this field will not be provided to the researcher
+
+,vw_0.CO as 0_CO
+,vw_0.Filter as 0_Filter
+,vw_0.filter_2_half as 0_filter_2_half
+,vw_0.ITemp as 0_ITemp
+,vw_0.Benzen as 0_Benzen
+,vw_0.H2S as 0_H2S
+,vw_0.no as 0_no
+,vw_0.No2 as 0_No2
+,vw_0.Nox as 0_Nox
+,vw_0.O3 as 0_O3
+,vw_0.PM10 as 0_PM10
+,vw_0.PREC as 0_PREC
+,vw_0.RH as 0_RH
+,vw_0.SO2 as 0_SO2
+,vw_0.STAB as 0_STAB
+,vw_0.Temp as 0_Temp
+,vw_0.TOLUENE as 0_TOLUENE
+,vw_0.WD as 0_WD
+,vw_0.WS as 0_WS
+,vw_0.BP as 0_BP
+,vw_0.pm2_half as 0_pm2_half
+,vw_0.SR as 0_SR
+,vw_0.StWd as 0_StWd
+,vw_0.NO_T as 0_NO_T
+,vw_0.NOX_T as 0_NOX_T
+,vw_0.NO2_T as 0_NO2_T
+,vw_0.shTemp as 0_shTemp
+,vw_0.PM1 as 0_PM1
+
+,vw_1.CO as 1_CO
+,vw_1.Filter as 1_Filter
+,vw_1.filter_2_half as 1_filter_2_half
+,vw_1.ITemp as 1_ITemp
+,vw_1.Benzen as 1_Benzen
+,vw_1.H2S as 1_H2S
+,vw_1.no as 1_no
+,vw_1.No2 as 1_No2
+,vw_1.Nox as 1_Nox
+,vw_1.O3 as 1_O3
+,vw_1.PM10 as 1_PM10
+,vw_1.PREC as 1_PREC
+,vw_1.RH as 1_RH
+,vw_1.SO2 as 1_SO2
+,vw_1.STAB as 1_STAB
+,vw_1.Temp as 1_Temp
+,vw_1.TOLUENE as 1_TOLUENE
+,vw_1.WD as 1_WD
+,vw_1.WS as 1_WS
+,vw_1.BP as 1_BP
+,vw_1.pm2_half as 1_pm2_half
+,vw_1.SR as 1_SR
+,vw_1.StWd as 1_StWd
+,vw_1.NO_T as 1_NO_T
+,vw_1.NOX_T as 1_NOX_T
+,vw_1.NO2_T as 1_NO2_T
+,vw_1.shTemp as 1_shTemp
+,vw_1.PM1 as 1_PM1
+ 
+,vw_2.CO as 2_CO
+,vw_2.Filter as 2_Filter
+,vw_2.filter_2_half as 2_filter_2_half
+,vw_2.ITemp as 2_ITemp
+,vw_2.Benzen as 2_Benzen
+,vw_2.H2S as 2_H2S
+,vw_2.no as 2_no
+,vw_2.No2 as 2_No2
+,vw_2.Nox as 2_Nox
+,vw_2.O3 as 2_O3
+,vw_2.PM10 as 2_PM10
+,vw_2.PREC as 2_PREC
+,vw_2.RH as 2_RH
+,vw_2.SO2 as 2_SO2
+,vw_2.STAB as 2_STAB
+,vw_2.Temp as 2_Temp
+,vw_2.TOLUENE as 2_TOLUENE
+,vw_2.WD as 2_WD
+,vw_2.WS as 2_WS
+,vw_2.BP as 2_BP
+,vw_2.pm2_half as 2_pm2_half
+,vw_2.SR as 2_SR
+,vw_2.StWd as 2_StWd
+,vw_2.NO_T as 2_NO_T
+,vw_2.NOX_T as 2_NOX_T
+,vw_2.NO2_T as 2_NO2_T
+,vw_2.shTemp as 2_shTemp
+,vw_2.PM1 as 2_PM1
+
+,vw_3.CO as 3_CO
+,vw_3.Filter as 3_Filter
+,vw_3.filter_2_half as 3_filter_2_half
+,vw_3.ITemp as 3_ITemp
+,vw_3.Benzen as 3_Benzen
+,vw_3.H2S as 3_H2S
+,vw_3.no as 3_no
+,vw_3.No2 as 3_No2
+,vw_3.Nox as 3_Nox
+,vw_3.O3 as 3_O3
+,vw_3.PM10 as 3_PM10
+,vw_3.PREC as 3_PREC
+,vw_3.RH as 3_RH
+,vw_3.SO2 as 3_SO2
+,vw_3.STAB as 3_STAB
+,vw_3.Temp as 3_Temp
+,vw_3.TOLUENE as 3_TOLUENE
+,vw_3.WD as 3_WD
+,vw_3.WS as 3_WS
+,vw_3.BP as 3_BP
+,vw_3.pm2_half as 3_pm2_half
+,vw_3.SR as 3_SR
+,vw_3.StWd as 3_StWd
+,vw_3.NO_T as 3_NO_T
+,vw_3.NOX_T as 3_NOX_T
+,vw_3.NO2_T as 3_NO2_T
+,vw_3.shTemp as 3_shTemp
+,vw_3.PM1 as 3_PM1
+
+,vw_4.CO as 4_CO
+,vw_4.Filter as 4_Filter
+,vw_4.filter_2_half as 4_filter_2_half
+,vw_4.ITemp as 4_ITemp
+,vw_4.Benzen as 4_Benzen
+,vw_4.H2S as 4_H2S
+,vw_4.no as 4_no
+,vw_4.No2 as 4_No2
+,vw_4.Nox as 4_Nox
+,vw_4.O3 as 4_O3
+,vw_4.PM10 as 4_PM10
+,vw_4.PREC as 4_PREC
+,vw_4.RH as 4_RH
+,vw_4.SO2 as 4_SO2
+,vw_4.STAB as 4_STAB
+,vw_4.Temp as 4_Temp
+,vw_4.TOLUENE as 4_TOLUENE
+,vw_4.WD as 4_WD
+,vw_4.WS as 4_WS
+,vw_4.BP as 4_BP
+,vw_4.pm2_half as 4_pm2_half
+,vw_4.SR as 4_SR
+,vw_4.StWd as 4_StWd
+,vw_4.NO_T as 4_NO_T
+,vw_4.NOX_T as 4_NOX_T
+,vw_4.NO2_T as 4_NO2_T
+,vw_4.shTemp as 4_shTemp
+,vw_4.PM1 as 4_PM1
+ 
+,vw_5.CO as 5_CO
+,vw_5.Filter as 5_Filter
+,vw_5.filter_2_half as 5_filter_2_half
+,vw_5.ITemp as 5_ITemp
+,vw_5.Benzen as 5_Benzen
+,vw_5.H2S as 5_H2S
+,vw_5.no as 5_no
+,vw_5.No2 as 5_No2
+,vw_5.Nox as 5_Nox
+,vw_5.O3 as 5_O3
+,vw_5.PM10 as 5_PM10
+,vw_5.PREC as 5_PREC
+,vw_5.RH as 5_RH
+,vw_5.SO2 as 5_SO2
+,vw_5.STAB as 5_STAB
+,vw_5.Temp as 5_Temp
+,vw_5.TOLUENE as 5_TOLUENE
+,vw_5.WD as 5_WD
+,vw_5.WS as 5_WS
+,vw_5.BP as 5_BP
+,vw_5.pm2_half as 5_pm2_half
+,vw_5.SR as 5_SR
+,vw_5.StWd as 5_StWd
+,vw_5.NO_T as 5_NO_T
+,vw_5.NOX_T as 5_NOX_T
+,vw_5.NO2_T as 5_NO2_T
+,vw_5.shTemp as 5_shTemp
+,vw_5.PM1 as 5_PM1
+
+,vw_6.CO as 6_CO
+,vw_6.Filter as 6_Filter
+,vw_6.filter_2_half as 6_filter_2_half
+,vw_6.ITemp as 6_ITemp
+,vw_6.Benzen as 6_Benzen
+,vw_6.H2S as 6_H2S
+,vw_6.no as 6_no
+,vw_6.No2 as 6_No2
+,vw_6.Nox as 6_Nox
+,vw_6.O3 as 6_O3
+,vw_6.PM10 as 6_PM10
+,vw_6.PREC as 6_PREC
+,vw_6.RH as 6_RH
+,vw_6.SO2 as 6_SO2
+,vw_6.STAB as 6_STAB
+,vw_6.Temp as 6_Temp
+,vw_6.TOLUENE as 6_TOLUENE
+,vw_6.WD as 6_WD
+,vw_6.WS as 6_WS
+,vw_6.BP as 6_BP
+,vw_6.pm2_half as 6_pm2_half
+,vw_6.SR as 6_SR
+,vw_6.StWd as 6_StWd
+,vw_6.NO_T as 6_NO_T
+,vw_6.NOX_T as 6_NOX_T
+,vw_6.NO2_T as 6_NO2_T
+,vw_6.shTemp as 6_shTemp
+,vw_6.PM1 as 6_PM1
+
+,vw_7.CO as 7_CO
+,vw_7.Filter as 7_Filter
+,vw_7.filter_2_half as 7_filter_2_half
+,vw_7.ITemp as 7_ITemp
+,vw_7.Benzen as 7_Benzen
+,vw_7.H2S as 7_H2S
+,vw_7.no as 7_no
+,vw_7.No2 as 7_No2
+,vw_7.Nox as 7_Nox
+,vw_7.O3 as 7_O3
+,vw_7.PM10 as 7_PM10
+,vw_7.PREC as 7_PREC
+,vw_7.RH as 7_RH
+,vw_7.SO2 as 7_SO2
+,vw_7.STAB as 7_STAB
+,vw_7.Temp as 7_Temp
+,vw_7.TOLUENE as 7_TOLUENE
+,vw_7.WD as 7_WD
+,vw_7.WS as 7_WS
+,vw_7.BP as 7_BP
+,vw_7.pm2_half as 7_pm2_half
+,vw_7.SR as 7_SR
+,vw_7.StWd as 7_StWd
+,vw_7.NO_T as 7_NO_T
+,vw_7.NOX_T as 7_NOX_T
+,vw_7.NO2_T as 7_NO2_T
+,vw_7.shTemp as 7_shTemp
+,vw_7.PM1 as 7_PM1  
+
+  
+
+,vw_0.Main_Diagnose 
+,vw_0.Main_Operation 
+,vw_0.diagnose_type 
+,vw_0.visit_reason 
+,vw_0.age_in_months 
+
+,vw_0.secondary_diagnoseoperation 
+,vw_0.secondary_diagnoseoperation_type 
+,vw_0.gender 
+,vw_0.discharge_type   
+ 
+
+from amir.vw_0_delivery_to_klimodo vw_0
+join amir.vw_1_delivery_to_klimodo vw_1 on
+vw_0.identity = vw_1.identity 
+and  vw_0.institute_code=vw_1.institute_code 
+and vw_0.No_Hospitalization=vw_1.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_1.Monitor_Station_Id
+and vw_0.monitor_time=vw_1.monitor_time
+
+
+
+join amir.vw_2_delivery_to_klimodo vw_2 on
+vw_0.identity = vw_2.identity 
+and  vw_0.institute_code=vw_2.institute_code 
+and vw_0.No_Hospitalization=vw_2.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_2.Monitor_Station_Id
+and vw_0.monitor_time=vw_2.monitor_time
+
+
+join amir.vw_3_delivery_to_klimodo vw_3 on
+vw_0.identity = vw_3.identity 
+and  vw_0.institute_code=vw_3.institute_code 
+and vw_0.No_Hospitalization=vw_3.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_3.Monitor_Station_Id
+and vw_0.monitor_time=vw_3.monitor_time
+
+
+join amir.vw_4_delivery_to_klimodo vw_4 on
+vw_0.identity = vw_4.identity 
+and  vw_0.institute_code=vw_4.institute_code 
+and vw_0.No_Hospitalization=vw_4.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_4.Monitor_Station_Id
+and vw_0.monitor_time=vw_4.monitor_time
+
+
+join amir.vw_5_delivery_to_klimodo vw_5 on
+vw_0.identity = vw_5.identity 
+and  vw_0.institute_code=vw_5.institute_code 
+and vw_0.No_Hospitalization=vw_5.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_5.Monitor_Station_Id
+and vw_0.monitor_time=vw_5.monitor_time
+
+
+join amir.vw_6_delivery_to_klimodo vw_6 on
+vw_0.identity = vw_6.identity 
+and  vw_0.institute_code=vw_6.institute_code 
+and vw_0.No_Hospitalization=vw_6.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_6.Monitor_Station_Id
+and vw_0.monitor_time=vw_6.monitor_time
+
+
+join amir.vw_7_delivery_to_klimodo vw_7 on
+vw_0.identity = vw_7.identity 
+and  vw_0.institute_code=vw_7.institute_code 
+and vw_0.No_Hospitalization=vw_7.No_Hospitalization
+and vw_0.Monitor_Station_Id=vw_7.Monitor_Station_Id
+and vw_0.monitor_time=vw_7.monitor_time
+
+
+order by vw_0.identity, vw_0.Monitor_Station_Id, vw_0.Admission_Year, vw_0.Admission_Month, vw_0.monitor_time asc;
+
+--order by vw_0.identity, vw_0.Monitor_Station_Id, vw_0.Admission_Year, vw_0.Admission_Month, vw_0.no_of_days_before_admission, vw_0.monitor_time asc;

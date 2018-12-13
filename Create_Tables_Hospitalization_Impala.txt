@@ -1,0 +1,143 @@
+DROP TABLE IF EXISTS amir.hospitalizations_visit;
+create external table amir.hospitalizations_visit (
+admit_move string,
+avrofilename string, 
+avroschemacha1 string, 
+avroschemafilename string,
+birth_country string, 
+  birth_weight string, 
+  birthday string, 
+  city_code string, 
+  createtimelong bigint, 
+  death_dignose string, 
+  discharge_date string, 
+  discharge_type string, 
+  family_status string, 
+  father_birth_country string, 
+  filesize bigint, 
+  gender string, 
+  hmo string, 
+  hospital_department string, 
+  hospitalisation_date string,  
+  hospitalisation_type string, 
+  idcard_type string, 
+  identity string, 
+  immigration_year string, 
+  institute_code string, 
+  mother_birth_country string, 
+  namespace string, 
+  national string, 
+  no_hospitalization string, 
+  pregant_age string,
+  record_type string, 
+  religin string, 
+  sessionid string, 
+  visit_number string, 
+  visit_number_parallel string, 
+  visit_reason string )
+  
+  
+row format delimited
+fields terminated by ','
+location '/user/amir.shaked/klimodo/hospitalizations_visit';
+
+
+++++++++++++++++
+DROP TABLE IF EXISTS amir.hosp_chronic_diagnosis;
+create external table amir.hosp_chronic_diagnosis (
+avrofilename  string,
+  avroschemacha1 string, 
+  avroschemafilename string, 
+  createtimelong bigint, 
+  diagnose_code string, 
+  diagnose_type string, 
+  filesize bigint,
+  institute_code string, 
+  namespace string, 
+  no_hospitalization string, 
+  record_type string, 
+  sessionid string)
+  
+  
+row format delimited
+fields terminated by ','
+location '/user/amir.shaked/klimodo/hosp_chronic_diagnosis';
+  
+++++++++++++++++
+DROP TABLE IF EXISTS amir.hosp_financier;
+create external table amir.hosp_financier (
+amount string, 
+avrofilename string, 
+avroschemacha1 string, 
+avroschemafilename string, 
+benefactor string, 
+billing_amount string, 
+createtimelong bigint, 
+department_code string, 
+filesize bigint, 
+hospitalization_rate string,
+institute_code string, 
+namespace string, 
+no_hospitalization string, 
+obligation string, 
+record_type string, 
+sessionid  string)
+
+ 
+row format delimited
+fields terminated by ','
+location '/user/amir.shaked/klimodo/hosp_financier';
+
+++++++++++++++++
+DROP TABLE IF EXISTS amir.hosp_ward_main_dgop;
+create external table amir.hosp_ward_main_dgop (
+admit_department_clock string, 
+admit_department_date string, 
+  avrofilename string, 
+  avroschemacha1 string, 
+  avroschemafilename string, 
+  createtimelong bigint, 
+  department_code string, 
+  discharge_department_clock string, 
+  discharge_department_date string, 
+  filesize bigint, 
+  first_operation_date string, 
+  institute_code string, 
+  main_diagnose string, 
+  main_operation string, 
+  namespace string, 
+  no_hospitalization string, 
+  record_type string, 
+  sessionid string)
+
+
+  
+  row format delimited
+  fields terminated by ','
+ location '/user/amir.shaked/klimodo/hosp_ward_main_dgop';
+
+
+++++++++++++++++
+DROP TABLE IF EXISTS amir.hosp_ward_secondary_dgop;
+create external table amir.hosp_ward_secondary_dgop (
+avrofilename string, 
+  avroschemacha1 string, 
+  avroschemafilename string, 
+  createtimelong bigint, 
+  department_code string, 
+  filesize bigint,
+institute_code string,  
+    namespace string, 
+  no_hospitalization string, 
+  record_type string, 
+  secondary_diagnoseoperation string,
+secondary_diagnoseoperation_type string, 
+secondary_operation_date string, 
+sessionid string)
+
+
+  
+  row format delimited
+  fields terminated by ','
+location '/user/amir.shaked/klimodo/hosp_ward_secondary_dgop';
+++++++++++++++++

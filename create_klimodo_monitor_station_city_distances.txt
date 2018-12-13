@@ -1,0 +1,19 @@
+ DROP TABLE IF EXISTS amir.klimodo_monitor_station_city_distances;
+create external table amir.klimodo_monitor_station_city_distances (
+monitor_station_id int ,
+	monitor_station_desc string ,
+	monitor_station_latitude decimal(15, 13) ,
+	monitor_station_longitude decimal(15, 13) ,
+	city_code int ,
+	City_desc string ,
+	city_latitude decimal(16, 14) ,
+	city_longitude decimal(16, 14) ,
+	monitor_station_city_distance float  
+  )
+  
+  row format delimited
+  fields terminated by ','
+ location '/user/amir.shaked/klimodo/klimodo_monitor_station_city_distances';
+ 
+ 
+ 

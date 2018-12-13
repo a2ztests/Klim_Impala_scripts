@@ -1,0 +1,71 @@
+--DROP TABLE IF EXISTS text_table;
+/*
+CREATE TABLE text_table
+( id INT, col_1 BOOLEAN, col_2 DOUBLE, col_3 TIMESTAMP )
+STORED AS TEXTFILE
+*/
+DROP TABLE IF EXISTS amir.Dim_City;
+create external table amir.Dim_City (
+ city_GK int ,
+	city_code int ,
+	city_desc string ,
+	city_eng_desc string ,
+	district_code smallint ,
+	district_desc string ,
+	district_code_CBS smallint ,
+	district_desc_CBS string ,
+	health_district_code smallint ,
+	health_district_desc string ,
+	region_code smallint ,
+	region_desc string ,
+	health_region_code smallint ,
+	health_region_desc string ,
+	Longitude decimal(16, 14) ,
+	Latitude decimal(16, 14) ,
+	Health_Longitude decimal(16, 14) ,
+	Health_Latitude decimal(16, 14) ,
+	total_population int ,
+	from_date TIMESTAMP , --changed from date
+	to_date TIMESTAMP ,   --changed from date
+	Natural_Area_Code int ,
+	Natural_Area_Desc string ,
+	Municipal_Status_Code int ,
+	Municipal_Status_Desc string ,
+	Metropolitan_Code int ,
+	Metropolitan_Desc string ,
+	Metropolitan_Ring_Code int ,
+	Metropolitan_Ring_Desc string ,
+	Metropolitan_Sector_Code int ,
+	Metropolitan_Sector_Desc string ,
+	Religion_Code int ,
+	Religion_Desc string ,
+	Foundation_Year string ,
+	City_Type_Code int ,
+	City_Type_Desc string ,
+	City_Type_Group_Code int ,
+	City_Type_Group_Desc string ,
+	Organization_Code int ,
+	Organization_Desc string ,
+	Height int ,
+	Planning_Committee_Code int ,
+	Planning_Committee_Desc string ,
+	Police_Sector_Code int ,
+	Police_Sector_Desc string ,
+	Police_Region_Code int ,
+	Police_Region_Desc string ,
+	Peripherality_Cluster int ,
+	Peripherality_Level_Code int ,
+	Peripherality_Level_Desc string ,
+	ri_ind string ,
+	ETL_insert_date_time TIMESTAMP , --changed from datetime
+	ETL_update_date_time TIMESTAMP , --changed from datetime
+	ETL_process_code string ,
+	region_eng_desc string ,
+	Municipal_Longitude decimal(16, 14) ,
+	Municipal_Latitude decimal(16, 14)  
+  )
+  
+  row format delimited
+  fields terminated by ','
+ location '/user/amir.shaked/Dim_City'
+ tblproperties ("skip.header.line.count"="1");

@@ -1,0 +1,13 @@
+ DROP TABLE IF EXISTS amir.klimodo_monitor_stations;
+ create external table amir.klimodo_monitor_stations (
+ monitor_station_id int ,
+	monitor_station_desc string ,
+	latitude decimal(15, 13) ,
+	longitude decimal(15, 13) ,
+	Amir_monitor_station_id int 
+  )
+  
+  row format delimited
+  fields terminated by ','
+ location '/user/amir.shaked/klimodo/klimodo_monitor_stations';
+ 

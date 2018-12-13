@@ -1,0 +1,67 @@
+DROP TABLE IF EXISTS amir.delivery_to_klimodo;
+
+ -- from hospitalizations_visit
+create external table amir.delivery_to_klimodo (
+identity  string
+,institute_code  string
+,No_Hospitalization string --required for flattening the fianl output provided to the researcher 
+--,Row_Num --this field will not be provided to the researcher
+,Monitor_Station_Id int
+,Monitor_Station_Desc string
+,Station_City_Distance_km float
+,Admission_Month int
+,Admission_Year	int
+
+--Remember that the clinical data is shifted in the lake +5 days
+,no_of_days_before_admission int
+,monitor_time string
+
+--,pnimi.City_code as Patient_City_code   --this field will not be provided to the researcher
+--,pnimi.City_desc as Patient_City_desc --this field will not be provided to the researcher
+
+
+,CO decimal(11, 4)
+,Filter decimal(11, 4)
+,filter_2_half decimal(11, 4)
+,ITemp decimal(11, 4)
+,Benzen decimal(11, 4)
+,H2S decimal(11, 4)
+,no decimal(11, 4)
+,No2 decimal(11, 4)
+,Nox decimal(11, 4)
+,O3 decimal(11, 4)
+,PM10 decimal(11, 4)
+,PREC decimal(11, 4)
+,RH decimal(11, 4)
+,SO2 decimal(11, 4)
+,STAB decimal(11, 4)
+,Temp decimal(11, 4)
+,TOLUENE decimal(11, 4)
+,WD decimal(11, 4)
+,WS decimal(11, 4)
+,BP decimal(11, 4)
+,pm2_half decimal(11, 4)
+,SR decimal(11, 4)
+,StWd decimal(11, 4)
+,NO_T decimal(11, 4)
+,NOX_T decimal(11, 4)
+,NO2_T decimal(11, 4)
+,shTemp decimal(11, 4)
+,PM1 decimal(11, 4)
+
+,Main_Diagnose string
+,Main_Operation string
+,diagnose_type string
+,visit_reason string
+,age_in_months int
+
+,secondary_diagnoseoperation string
+,secondary_diagnoseoperation_type string
+,gender string
+,discharge_type string
+  
+  )
+ row format delimited
+  fields terminated by ','
+  location '/user/amir.shaked/klimodo/delivery_to_klimodo';
+  

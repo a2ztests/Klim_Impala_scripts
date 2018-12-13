@@ -1,0 +1,183 @@
+DROP VIEW IF EXISTS amir.vw_dat_not_mapped_stations;
+-- select * from amir.vw_dat_not_mapped_stations
+
+
+CREATE VIEW IF NOT EXISTS amir.vw_dat_not_mapped_stations
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data of the monitoring stations, for patients that live in cities NOT !!! mapped by Uriel'
+  AS 
+
+--Attach for each patient the monitor stations only for the patients city NOT mapped by Uriel
+
+select 
+
+pnimi.identity--Connect this to the select of all the hospitalization data using the hashed(hospitalizations_visit.identity)
+,pnimi.No_Hospitalization  --this field will not be provided to the researcher
+
+,pnimi.City_code as Patient_City_code   --this field will not be provided to the researcher
+,pnimi.City_desc as Patient_City_desc --this field will not be provided to the researcher
+
+,pnimi.institute_code  --this field will not be provided to the researcher
+,pnimi.monitor_station_id as Monitor_Station_Id
+,pnimi.monitor_station_desc as Monitor_Station_Desc
+,pnimi.Distance as Station_City_Distance_km 
+,pnimi.hospitalisation_date
+
+ --the 2 following fields will not be provided to the researcher - they are  for tests
+/*
+,cast( 
+         concat(
+           substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+               ) 
+        as timestamp
+    ) -interval 5 days as hosp_date_calc
+,concat(
+                      substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+                      )  hosp_date
+
+*/
+,month(cast( 
+               concat(
+                      substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+                     ) as timestamp
+           ) -interval 5 days
+      ) as Admission_Month
+              
+,year(cast( 
+               concat(
+                      substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+                      ) as timestamp
+           ) -interval 5 days
+    ) as Admission_Year	  
+
+
+
+
+--,dat.monitor_date --this field will not be provided to the researcher
+--Remember that the clinical data is shifted in the lake +5 days
+,datediff( 
+          cast( 
+               concat(
+                      substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+                      ) as timestamp
+              ) -interval 5 days,
+
+			 
+          cast( 
+               concat(
+                       substr(dat.monitor_date,2,4),"-", substr(dat.monitor_date, 7,2),"-", substr(dat.monitor_date,10,2)
+                      ) as timestamp
+              ) 
+         )  no_of_days_before_admission
+,substr(dat.monitor_time,13,5) monitor_time
+
+
+
+,dat.CO, dat.Filter, dat.filter_2_half, dat.ITemp, dat.Benzen 
+,dat.H2S,dat.no,dat.No2,dat.Nox,dat.O3,dat.PM10,dat.PREC,dat.RH
+,dat.SO2,dat.STAB,dat.Temp,dat.TOLUENE,dat.WD,dat.WS,dat.BP
+
+,dat.pm2_half
+,dat.SR
+,dat.StWd
+,dat.NO_T
+,dat.NOX_T
+,dat.NO2_T 
+,dat.shTemp
+,dat.PM1
+ 
+
+
+from 
+(select 
+pat.Identity as identity 
+, pat.institute_code
+, pat.No_Hospitalization 
+,pat.hospitalisation_date
+, pat.City_code
+, dim_city.city_desc
+ ,not_in_Uriel_mapping.monitor_station_id as monitor_station_id, not_in_Uriel_mapping.monitor_station_desc as monitor_station_desc
+, min(not_in_Uriel_mapping.monitor_station_city_distance) as distance
+,ROW_NUMBER() over (partition by  pat.Identity, pat.hospitalisation_date  order by min(not_in_Uriel_mapping.monitor_station_city_distance) asc ) AS Row_Num
+
+
+from amir.hospitalizations_visit pat
+
+left join amir.dim_city 
+on pat.City_code = cast(dim_city.City_Code as string)
+ 
+ --We only take patients cities that are not!!! in Uriel mapping
+ --https://www.google.ie/search?q=sql+join+types&rlz=1C1CHBD_enIE814IE814&tbm=isch&source=iu&ictx=1&fir=98zIESpVxt_SVM%253A%252CoGQPooZweFFQ5M%252C_&usg=AFrqEzfiONsNAmJZYRM01YkBrHMNmPXEqg&sa=X&ved=2ahUKEwjOiffF78TdAhUJQ8AKHe7KBAcQ9QEwAnoECAAQBg#imgrc=98zIESpVxt_SVM:
+join 
+(select dist.monitor_station_id, dist.monitor_station_desc
+,dist.monitor_station_city_distance, dist.City_code
+from amir.klimodo_city_to_monitor_station_partial_map mapping 
+right join klimodo_monitor_station_city_distances dist
+on  mapping.city_code = dist.city_code
+where mapping.city_code is null) not_in_Uriel_mapping
+
+on dim_city.city_code = not_in_Uriel_mapping.City_code
+ 
+where 
+pat.Identity is not null
+
+ 
+and pat.City_code is not null
+and pat.institute_code is not null
+and pat.No_Hospitalization is not null
+
+--and pat.Identity = '23686900' --only for testing on more than 2 admissions
+ 
+group by 
+pat.Identity
+ , pat.institute_code
+ , pat.No_Hospitalization 
+ , pat.hospitalisation_date
+, pat.City_code 
+,dim_city.City_desc
+  , not_in_Uriel_mapping.monitor_station_id, not_in_Uriel_mapping.monitor_station_desc
+) as pnimi
+
+
+join
+(select monitor_station_id, monitor_date, monitor_time
+ ,CO, Filter, filter_2_half, ITemp, Benzen, H2S, No 
+ , No2 , Nox , O3, PM10, PREC, RH, SO2, STAB, Temp, TOLUENE
+ , WD, WS, BP, pm2_half, SR, StWd, NO_T, NOX_T, NO2_T, shTemp, PM1
+from amir.klimodo_monitor_stations_data) as dat
+
+on dat.monitor_station_id = pnimi.monitor_station_id
+
+
+where pnimi.Row_Num=1
+
+
+--and pnimi.city_code='8200' --this field is for testing that mapped!!! city codes do not enter the result of this query
+
+and
+
+cast( 
+               concat(
+                       substr(dat.monitor_date,2,4),"-", substr(dat.monitor_date, 7,2),"-", substr(dat.monitor_date,10,2)
+                      ) as timestamp
+    ) 
+
+between
+
+cast( 
+         concat(
+                substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+                ) as timestamp
+    ) -interval 12 days
+and 
+     cast( 
+         concat(
+           substr(pnimi.hospitalisation_date,1,4),"-", substr(pnimi.hospitalisation_date, 6,2),"-", substr(pnimi.hospitalisation_date,9,2)
+               ) as timestamp
+         ) -interval 5 days
+
+--;         
+--USING(monitor_station_id)
+--order by hospitalisation_date, no_of_days_before_admission, monitor_time desc
+
+

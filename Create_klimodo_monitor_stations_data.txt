@@ -1,0 +1,40 @@
+ DROP TABLE IF EXISTS amir.klimodo_monitor_stations_data;
+ create external table amir.klimodo_monitor_stations_data (
+monitor_station_id int ,
+	Monitor_Date  string, --changed from TIMESTAMP
+	Monitor_Time string , --changed from TIMESTAMP
+	CO decimal(11, 4) ,
+	Filter decimal(11, 4) ,
+	Filter_2_half decimal(11, 4) , --changed
+	ITemp decimal(11, 4) ,
+	Benzen decimal(11, 4) ,
+	H2S decimal(11, 4) ,
+	No decimal(11, 4) ,
+	No2 decimal(11, 4) ,
+	Nox decimal(11, 4) ,
+	O3 decimal(11, 4) ,
+	PM10 decimal(11, 4) ,
+	PREC decimal(11, 4) ,
+	RH decimal(11, 4) ,
+	SO2 decimal(11, 4) ,
+	STAB decimal(11, 4) ,
+	Temp decimal(11, 4) ,
+	TOLUENE decimal(11, 4) ,
+	WD decimal(11, 4) ,
+	WS decimal(11, 4) ,
+	BP decimal(11, 4) ,
+	PM2_half decimal(11, 4) , --changed
+	SR decimal(11, 4) ,
+	StWd decimal(11, 4) ,
+	NO_T decimal(11, 4) ,
+	NOX_T decimal(11, 4) ,
+	NO2_T decimal(11, 4) ,
+	shTemp decimal(11, 4) ,
+	PM1 decimal(11, 4) 
+)
+ row format delimited
+  fields terminated by ','
+  location '/user/amir.shaked/klimodo/klimodo_monitor_stations_data';
+  
+  
+  

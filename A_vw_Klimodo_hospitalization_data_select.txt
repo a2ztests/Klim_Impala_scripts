@@ -1,0 +1,106 @@
+DROP VIEW IF EXISTS amir.vw_Klimodo_hospitalization_data_select;
+-- select * from amir.vw_Klimodo_hospitalization_data_select
+
+CREATE VIEW IF NOT EXISTS amir.vw_Klimodo_hospitalization_data_select
+  --  [(column_name [COMMENT 'column_comment'][, ...])]
+    COMMENT 'This wiew captures the data from the hospitalization tables'
+  AS 
+
+select h_vis.identity--Connect this to the select of all the distance calculations using the hashed(hospitalizations_visit.identity)
+
+,h_vis.hospitalisation_date, h_vis.Visit_Number, h_vis.No_Hospitalization --these field will not be provided to the researcher
+,h_main.Main_Diagnose, h_main.Main_Operation
+,h_chron.diagnose_type, h_vis.visit_reason
+,h_vis.institute_code
+
+
+
+
+ --Difference in months between birthday PLUS 7 days  & hospitalisation_date MINUS 5 days
+,int_months_between(
+cast( 
+         concat(
+           substr(h_vis.hospitalisation_date,1,4),"-", substr(h_vis.hospitalisation_date, 6,2),"-", substr(h_vis.hospitalisation_date,9,2)
+               ) 
+        as timestamp
+        ) -interval 5 days,
+                    
+                    
+cast( 
+         concat(
+           substr(h_vis.birthday,1,4),"-", substr(h_vis.birthday, 6,2),"-", substr(h_vis.birthday,9,2)
+               ) 
+        as timestamp
+        ) +interval 7 days
+) as age_in_months --This will probably be replaced by age groups using IPV2 
+ 
+
+,h_second.secondary_diagnoseoperation
+,h_second.secondary_diagnoseoperation_type
+,h_vis.gender
+,h_vis.discharge_type
+,h_vis.city_code
+
+--from reservoir.hospitalizations_visit h_vis - change for all the tables to reservoir
+from amir.hospitalizations_visit h_vis
+left join amir.hosp_ward_main_dgop h_main 
+on  h_vis.No_Hospitalization =h_main.No_Hospitalization 
+and h_vis.institute_code =h_main.institute_code
+
+left join amir.hosp_chronic_diagnosis  h_chron 
+on h_vis.No_Hospitalization =h_chron.No_Hospitalization
+and h_vis.institute_code =h_chron.institute_code
+
+left join amir.hosp_ward_secondary_dgop h_second 
+on h_vis.No_Hospitalization =h_second.No_Hospitalization
+and h_vis.institute_code =h_second.institute_code
+
+--where h_vis.Identity = '23686900' -- 23686901 only for testing on more than 2 admissions
+
+where 
+h_vis.identity is not null
+and h_vis.city_code is not null
+and h_vis.hospitalisation_date is not null
+and h_vis.No_Hospitalization is not null
+and h_chron.diagnose_code in(
+'49300', --Extrinsic asthma, unspecified convert 493.00 to ICD-10-CM
+'49301', --Extrinsic asthma with status asthmaticus convert 493.01 to ICD-10-CM
+'49302', --Extrinsic asthma with (acute) exacerbation convert 493.02 to ICD-10-CM
+'49310', --Intrinsic asthma, unspecified convert 493.10 to ICD-10-CM
+'49311', --Intrinsic asthma with status asthmaticus convert 493.11 to ICD-10-CM
+'49312', --Intrinsic asthma with (acute) exacerbation convert 493.12 to ICD-10-CM
+'49320', --Chronic obstructive asthma, unspecified convert 493.20 to ICD-10-CM
+'49321', --Chronic obstructive asthma with status asthmaticus convert 493.21 to ICD-10-CM
+'49322', --Chronic obstructive asthma with (acute) exacerbation convert 493.22 to ICD-10-CM
+'49381', --Exercise induced bronchospasm convert 493.81 to ICD-10-CM
+'49382', --Cough variant asthma convert 493.82 to ICD-10-CM
+'49390', --Asthma,unspecified type, unspecified convert 493.90 to ICD-10-CM
+'49391',--Asthma, unspecified type, with status asthmaticus convert 493.91 to ICD-10-CM
+'49392') --Asthma, unspecified type, with (acute) exacerbation convert 493.92 to ICD-10-CM
+
+/*אבחנות דומות, עם אפשרות של בלבול עם אסתמה באשפוז/מיון
+
+'49120', --obstruction airway, chronic airway obstruction 
+'49122', --acute bronchitis
+'49121', --exacerbation (acute) 
+'4910', --somker’s bronchitis 
+'4281', --Cardiac/ cardiobronchial asthma (see also Failure, ventricular, left) 428.1
+'5183', --eosinophilic asthma 
+'316', --psychogenic asthma 
+'500', --Colliers' asthma 
+'502', --Grinders' asthma 
+'4958', --Red cedar asthma 
+'5069', --Meat-wrappers' asthma 
+'5078', --Detergent asthma 
+'490', --Bronchitis (diffuse) (hypostatic) (infectious) (inflammatory) (simple) 
+'4660', --Acute bronchitis 
+'46619', --Bronchiolitis (acute) (infectious) (subacute) 
+'5064', --chronic bronchiolitis 
+'4918', --chronic (obliterative) bronchiolitis 
+'99684', --status post lung transplant 
+'7862', --Cough 
+'78607', --Wheezing respiration 
+'78605', --Shortness of breath 
+'78609' --Dyspnea (nocturnal) (paroxysmal) 
+) 
+*/
